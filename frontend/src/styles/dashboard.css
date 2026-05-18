@@ -1,0 +1,96 @@
+/* ================================
+   DASHBOARD COMMON LAYOUT
+   โครงหลักของ Dashboard Fullscreen
+================================ */
+
+.dashboard-page {
+  width: 100vw;
+  height: 100vh;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.dashboard-screen {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.dashboard-page,
+.dashboard-page * {
+  box-sizing: border-box;
+}
+
+/* ไม่ให้หน้า Dashboard ขึ้น cursor แบบพิมพ์ข้อความ */
+.dashboard-page,
+.dashboard-page div,
+.dashboard-page span,
+.dashboard-page p,
+.dashboard-page h1,
+.dashboard-page h2,
+.dashboard-page h3,
+.dashboard-page table,
+.dashboard-page th,
+.dashboard-page td {
+  cursor: default;
+  user-select: none;
+}
+
+/* ของที่กดได้ใน Dashboard */
+.dashboard-page button,
+.dashboard-page select,
+.dashboard-page input[type="range"] {
+  cursor: pointer;
+}
+
+/* input ที่เป็นช่องพิมพ์จริง */
+.dashboard-page input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]),
+.dashboard-page textarea {
+  cursor: text;
+  user-select: text;
+}
+
+/* ใช้ตอน Dashboard สลับ mode */
+.dashboard-mode {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* fallback สำหรับหน้าที่ไม่มีข้อมูล */
+.dashboard-empty {
+  width: 100vw;
+  height: 100vh;
+  background: #0a0e1a;
+  color: #e0f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.dashboard-empty-card {
+  background: #0d1226;
+  border: 1px solid #1a2a4a;
+  border-radius: 18px;
+  padding: 28px 34px;
+  max-width: 520px;
+}
+
+.dashboard-empty-card h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.dashboard-empty-card p {
+  margin: 0;
+  color: #8aa0bd;
+  font-size: 14px;
+}

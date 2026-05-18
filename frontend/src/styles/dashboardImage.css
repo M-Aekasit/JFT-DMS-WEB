@@ -1,0 +1,112 @@
+/* ================================
+   DASHBOARD IMAGE BOARD
+   หน้าแสดงรูปจาก Production Update
+================================ */
+
+.dashboard-image-page {
+  width: 100vw;
+  height: 100vh;
+  background: #000033;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dashboard-image-topline {
+  flex: 0 0 auto;
+  background: #32cd32;
+  color: #ffffff;
+  padding: clamp(8px, 1.2vh, 14px) clamp(14px, 2vw, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  min-width: 0;
+}
+
+.dashboard-image-topline h1 {
+  margin: 0;
+  font-size: clamp(26px, 3.6vw, 56px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard-image-topline p {
+  margin: 4px 0 0;
+  font-size: clamp(10px, 0.9vw, 13px);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.dashboard-image-clock {
+  flex: 0 0 auto;
+  text-align: right;
+  font-weight: 900;
+  font-size: clamp(18px, 2vw, 34px);
+  line-height: 1.12;
+  white-space: nowrap;
+}
+
+.dashboard-image-stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000033;
+  padding: clamp(8px, 1.6vh, 18px);
+  overflow: hidden;
+}
+
+.dashboard-image-stage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: #000033;
+}
+
+.dashboard-image-empty {
+  width: min(520px, calc(100vw - 32px));
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 26px;
+  text-align: center;
+  color: #dbeafe;
+}
+
+.dashboard-image-empty h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.dashboard-image-empty p {
+  margin: 0;
+  color: #93c5fd;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .dashboard-image-topline {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dashboard-image-topline h1 {
+    white-space: normal;
+  }
+
+  .dashboard-image-clock {
+    text-align: left;
+  }
+}

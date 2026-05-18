@@ -1,0 +1,497 @@
+/* ================================
+   DAILY DASHBOARD GRAPH BOARD
+   หน้ากราฟ Dashboard โทน Dark Neon
+================================ */
+
+.daily-dashboard-page {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(0, 100, 200, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(0, 200, 100, 0.05) 0%, transparent 50%),
+    #0a0e1a;
+  color: #e0f0ff;
+  overflow: hidden;
+}
+
+.daily-html-board {
+  width: 100%;
+  height: 100vh;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: inherit;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.daily-html-header {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 8px 0 10px;
+  border-bottom: 1px solid #1a2a4a;
+}
+
+.daily-html-header h1 {
+  margin: 0;
+  font-size: clamp(22px, 2.2vw, 34px);
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #ffd700;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.35);
+}
+
+.daily-html-header div {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #4a6a8a;
+  letter-spacing: 2px;
+}
+
+/* ================================
+   KPI ROW & CARDS
+================================ */
+
+.daily-html-kpi-row {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.daily-kpi-card,
+.daily-loss-kpi-card {
+  background: #0d1226;
+  border: 1px solid #1a2a4a;
+  border-radius: 8px;
+  padding: 14px;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.daily-kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* เส้นสีแต่งขอบบนการ์ด */
+.daily-kpi-card::before,
+.daily-loss-kpi-card::before,
+.daily-html-chart-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.daily-kpi-card:nth-child(1)::before {
+  background: linear-gradient(90deg, transparent, #00c8ff, transparent);
+}
+
+.daily-kpi-card:nth-child(2)::before {
+  background: linear-gradient(90deg, transparent, #00ff88, transparent);
+}
+
+.daily-loss-kpi-card::before {
+  background: linear-gradient(90deg, transparent, #ff4444, transparent);
+}
+
+/* ================================
+   DONUT KPI (Plan & Productivity)
+================================ */
+
+.daily-donut-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  flex: 0 0 auto;
+}
+
+.daily-donut-bg {
+  fill: none;
+  stroke: #1a2a4a;
+  stroke-width: 14;
+}
+
+.daily-donut-fg {
+  fill: none;
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+
+.daily-donut-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.daily-kpi-title {
+  font-size: 16px;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.daily-kpi-line {
+  font-size: 18px;
+  font-weight: 700;
+  color: #e0f0ff;
+  line-height: 1.5;
+}
+
+/* ================================
+   LOSS TIME KPI (Donut & Legend)
+================================ */
+
+.daily-loss-title {
+  text-align: center;
+  font-size: 18px;
+  color: #ffd700;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.daily-loss-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.daily-loss-donut {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  flex: 0 0 auto;
+}
+
+.daily-loss-donut svg {
+  transform: rotate(-90deg);
+}
+
+.daily-loss-bg {
+  fill: none;
+  stroke: #1a2a4a;
+  stroke-width: 12;
+}
+
+.daily-loss-seg {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.daily-loss-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffd700;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.daily-loss-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.daily-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #cbd5e1;
+  white-space: nowrap;
+}
+
+.daily-legend-item span {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+}
+
+/* ================================
+   CONTROLS (Filter, Target, Clock)
+================================ */
+
+.daily-html-controls {
+  flex: 0 0 auto;
+  background: #0d1226;
+  border: 1px solid #1a2a4a;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.daily-html-ctrl-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.daily-html-ctrl-group label {
+  font-size: 12px;
+  color: #4a6a8a;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.daily-html-ctrl-group select,
+.daily-html-ctrl-group input[type="range"] {
+  cursor: pointer;
+}
+
+.daily-html-ctrl-group select {
+  background: #0a1020;
+  border: 1px solid #1a2a4a;
+  color: #00c8ff;
+  border-radius: 5px;
+  padding: 5px 8px;
+  outline: none;
+}
+
+.daily-html-ctrl-group select:hover {
+  border-color: #00c8ff;
+}
+
+.daily-html-ctrl-group input[type="range"] {
+  width: 120px;
+  accent-color: #00c8ff;
+}
+
+.daily-html-ctrl-group span {
+  min-width: 48px;
+  color: #ffd700;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.daily-html-controls-spacer {
+  flex: 1 1 auto;
+}
+
+.daily-html-btn {
+  border-radius: 5px;
+  padding: 6px 12px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.daily-html-btn.blue {
+  border: 1px solid #00c8ff;
+  color: #00c8ff;
+  background: rgba(0, 200, 255, 0.08);
+}
+
+.daily-html-btn.blue:hover {
+  background: rgba(0, 200, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.28);
+}
+
+.daily-html-btn.green {
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.08);
+}
+
+.daily-html-btn.green:hover {
+  background: rgba(0, 255, 136, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.28);
+}
+
+.daily-html-clock {
+  color: #ffd700;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* ================================
+   CHART CARD & CANVAS
+================================ */
+
+.daily-html-chart-card {
+  flex: 1 1 auto;
+  min-height: 0;
+  background: #0d1226;
+  border: 1px solid #1a2a4a;
+  border-radius: 8px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.daily-html-chart-card::before {
+  background: linear-gradient(90deg, #00c8ff, #00ff88, #ffd700);
+}
+
+.daily-html-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.daily-html-chart-title {
+  font-size: 13px;
+  color: #ffd700;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.daily-html-chart-legend {
+  display: flex;
+  gap: 16px;
+  color: #4a6a8a;
+  font-size: 12px;
+}
+
+.daily-html-chart-legend div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.daily-html-chart-legend span {
+  width: 22px;
+  height: 2px;
+  display: inline-block;
+}
+
+.daily-html-chart-legend .actual {
+  background: #00c8ff;
+}
+
+.daily-html-chart-legend .target {
+  border-top: 2px dashed #ff8c00;
+}
+
+.daily-html-chart-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+}
+
+.daily-html-chart-wrap canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* กล่องคำบรรยาย (Annotations) */
+.daily-html-annotation {
+  position: absolute;
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid #ffd700;
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #ffd700;
+  font-size: clamp(16px, 1.5vw, 24px);
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.daily-html-annotation.actual {
+  top: 30%;
+  right: 28%;
+}
+
+.daily-html-annotation.loss {
+  top: 55%;
+  right: 38%;
+}
+
+.daily-html-annotation.target {
+  top: 5%;
+  right: 2%;
+}
+
+.daily-html-annotation.time {
+  bottom: 8%;
+  right: 2%;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1100px) {
+  .daily-dashboard-page {
+    overflow: auto;
+  }
+
+  .daily-html-board {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .daily-html-kpi-row {
+    grid-template-columns: 1fr;
+  }
+
+  .daily-html-chart-wrap {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 700px) {
+  .daily-html-board {
+    padding: 10px;
+  }
+
+  .daily-html-controls {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .daily-html-controls-spacer {
+    display: none;
+  }
+
+  .daily-html-chart-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .daily-html-chart-legend {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

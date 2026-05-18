@@ -1,0 +1,336 @@
+/* ================================
+   DASHBOARD PRODUCTION BOARD (DARK NEON THEME)
+================================ */
+
+:root {
+  /* โทนสีหลักสำหรับตาราง */
+  --dt-bg: #0b1121;
+  /* พื้นหลังสีกรมท่าเข้มจัด */
+  --dt-border: rgba(255, 255, 255, 0.06);
+  /* เส้นตารางบางๆ */
+
+  /* โทนสีข้อความ */
+  --dt-label: #94a3b8;
+  /* สีเทาหม่น สำหรับหัวข้อ */
+  --dt-val-cyan: #22d3ee;
+  /* สีฟ้า Neon */
+  --dt-val-green: #4ade80;
+  /* สีเขียว Neon */
+  --dt-val-white: #f8fafc;
+  /* สีขาวสว่าง */
+}
+
+.dashboard-production-board {
+  width: 100vw;
+  height: 100vh;
+  background: var(--dt-bg);
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ── TABLE STRUCTURE ── */
+.production-board-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border: none;
+  outline: none;
+}
+
+.production-board-table th,
+.production-board-table td {
+  border: 1px solid var(--dt-border);
+  padding: clamp(6px, 1vh, 16px) clamp(8px, 1vw, 20px);
+  vertical-align: middle;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ลบขอบตารางด้านนอกสุด */
+.production-board-table tr:first-child>* {
+  border-top: 0;
+}
+
+.production-board-table tr:last-child>* {
+  border-bottom: 0;
+}
+
+.production-board-table tr>*:first-child {
+  border-left: 0;
+}
+
+.production-board-table tr>*:last-child {
+  border-right: 0;
+}
+
+.dashboard-production-board *,
+.production-board-table * {
+  cursor: default;
+  user-select: none;
+}
+
+/* ================================
+   COLOR GROUPING (SUBTLE TINTS)
+   แบ่งกลุ่มด้วยสีโปร่งแสง 2-4% ให้กลืนกับ Dark Theme
+================================ */
+
+.production-board-table .pb-green {
+  /* background: rgba(34, 211, 238, 0.03); */
+  background: rgba(255, 255, 255, 0.02)
+}
+
+.production-board-table .pb-orange {
+  background: rgba(249, 115, 22, 0.03);
+}
+
+.production-board-table .pb-peach {
+  background: rgba(251, 146, 60, 0.02);
+}
+
+.production-board-table .pb-light-blue {
+  background: rgba(59, 130, 246, 0.03);
+}
+
+.production-board-table .pb-gray {
+  background: rgba(148, 163, 184, 0.03);
+}
+
+/* ================================
+   DELAY / ADVANCE SPECIAL BOX 
+   กล่องสีส้ม-แดงไล่ระดับสี (ตามภาพอ้างอิง)
+================================ */
+.pb-delay-box {
+  background: linear-gradient(135deg, #ef4444, #f97316) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  text-align: center;
+}
+
+.pb-delay-box.pb-label {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.pb-delay-box.pb-value-big {
+  color: #ffffff !important;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================
+   STOP REASON DYNAMIC COLORS
+================================ */
+.pb-reason-label {
+  color: var(--dt-label);
+  font-weight: 800;
+  font-size: clamp(16px, 1.8vw, 32px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.pb-reason-value {
+  color: var(--reason-color);
+  /* ดึงสีมาจาก Inline Style */
+  font-weight: 900;
+  font-size: clamp(28px, 3.5vw, 60px);
+  text-align: center;
+  white-space: nowrap;
+  /* ใส่ลูกเล่นให้ตัวเลขเรืองแสงตามสีของตัวมันเอง */
+  text-shadow: 0 0 12px color-mix(in srgb, var(--reason-color) 40%, transparent);
+}
+
+
+/* ================================
+   TYPOGRAPHY & NEON COLORS
+================================ */
+
+.pb-label {
+  color: var(--dt-label);
+  font-weight: 800;
+  font-size: clamp(16px, 1.8vw, 32px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* ตัวเลขขนาดใหญ่ */
+.pb-value-big {
+  font-weight: 900;
+  font-size: clamp(32px, 4vw, 68px);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ไฮไลท์พิเศษสำหรับ Part No. / Part Name */
+.pb-value-product {
+  font-weight: 900;
+  font-size: clamp(36px, 4.5vw, 76px);
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.pb-value-partname {
+  font-weight: 900;
+  font-size: clamp(36px, 4.5vw, 52px);
+  line-height: 1;
+}
+
+/* --- Utilities สีตัวอักษร --- */
+.pb-val-cyan {
+  color: var(--dt-val-cyan) !important;
+}
+
+.pb-val-green {
+  color: var(--dt-val-green) !important;
+}
+
+.pb-val-white {
+  color: var(--dt-val-white) !important;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-height: 760px) {
+
+  .pb-label,
+  .pb-reason-label {
+    font-size: clamp(14px, 1.6vw, 26px);
+  }
+
+  .pb-value-big,
+  .pb-reason-value {
+    font-size: clamp(26px, 3vw, 52px);
+  }
+
+  .pb-value-product,
+  .pb-value-partname {
+    font-size: clamp(30px, 3.8vw, 60px);
+  }
+}
+
+/* ── MAIN LAYOUT ── */
+.dashboard-production-board {
+  width: 100vw;
+  height: 100vh;
+  background: #020617;
+  /* พื้นหลังดำ Slate เข้ม */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pb-main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* ── HEADER STYLE ── */
+.pb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5vh 2.5vw;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex: 0 0 auto;
+}
+
+.pb-line-title {
+  color: #22d3ee;
+  /* Cyan Neon */
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 900;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.pb-line-subtitle {
+  margin-top: 8px;
+  color: #94a3b8;
+  font-size: clamp(14px, 1.2vw, 20px);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-transform: uppercase;
+}
+
+.pb-sub-divider {
+  color: #334155;
+  font-weight: 400;
+}
+
+/* ── DATETIME BOX (แทนที่ RUNNING BADGE) ── */
+.pb-datetime-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #4ade80;
+  /* สีเขียว Neon สว่าง ให้เข้ากับ Theme */
+  text-shadow: 0 0 12px rgba(74, 222, 128, 0.4);
+  /* เรืองแสงนิดๆ */
+  line-height: 1.1;
+}
+
+.pb-date {
+  font-size: clamp(18px, 2.2vw, 36px);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.pb-time {
+  font-size: clamp(24px, 3.2vw, 48px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+.pb-pulse-dot {
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(34, 197, 94, 0.4);
+  animation: pb-pulse 1.8s infinite;
+}
+
+@keyframes pb-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* ── TABLE ADJUSTMENTS ── */
+.production-board-table {
+  flex: 1;
+  /* ให้ตารางกินพื้นที่ที่เหลือ */
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* (ส่วน CSS อื่นๆ ของตารางที่ทำไว้ก่อนหน้า ใช้ของเดิมได้เลยครับ เพียงแค่ลบ .dashboard-production-board background ออกเพราะย้ายไปไว้ที่ Root แล้ว) */

@@ -1,0 +1,20 @@
+{
+  "name": "jft-mes-vite-refactor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "axios": "^1.16.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.28.0",
+    "recharts": "^3.8.1",
+    "vite": "^5.4.11"
+  }
+}
