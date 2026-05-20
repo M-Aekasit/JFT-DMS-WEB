@@ -31,3 +31,14 @@ export const deleteLineApi = async (code) => {
   const response = await api.delete(`/deleteLine/${code}`);
   return response.data;
 };
+
+// (PATCH)
+export const patchProductionInfoApi = async (code, data) => {
+  const response = await api.patch(`/patchProductionInfo/${code}`, data);
+  return response.data;
+};
+
+export const patchStopStatusApi = async (code, data) => {
+  const response = await api.patch(`/patchStopStatus/${code}`, data);
+  return response.data;
+};
